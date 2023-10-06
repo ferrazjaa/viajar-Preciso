@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Colaborativa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Conteúdo da Wiki -->
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Wiki Colaborativa</h1>
+        </header>
+
+        <!-- Conteúdo da Página -->
+        <main>
+            <!-- Aqui você pode adicionar a lista de páginas, links para edição, etc. -->
+            <article>
+                <h2>Página de Exemplo</h2>
+                <p>Este é um exemplo de página na sua wiki.</p>
+                <button class="btn btn-primary edit-button">Editar</button>
+            </article>
+        </main>
+    </div>
+
+    <!-- Scripts Bootstrap (jQuery e Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        // Função para ativar a edição
+        function enableEditing() {
+            const article = document.querySelector('article');
+            const editButton = document.querySelector('.edit-button');
+    
+            editButton.addEventListener('click', () => {
+                const content = article.innerHTML;
+                const textarea = document.createElement('textarea');
+                textarea.value = content;
+                article.innerHTML = '';
+                article.appendChild(textarea);
+    
+                const saveButton = document.createElement('button');
+                saveButton.textContent = 'Salvar';
+                saveButton.className = 'btn btn-success';
+                saveButton.addEventListener('click', () => {
+                    article.innerHTML = textarea.value;
+                article.appendChild(editButton);
+            });
+
+            article.appendChild(saveButton);
+        });
+    }
+
+    enableEditing();
+</script>
+</body>
+</html>
